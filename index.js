@@ -8,4 +8,4 @@ if(x > 9 && x <100 && typeof x === "number"){
 
 }else{
     console.log("Erorr!");
-};
+
