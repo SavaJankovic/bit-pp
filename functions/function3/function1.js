@@ -1,17 +1,31 @@
-// function insert(str, strNew, pos) {
-//     for (var i = 0; i < str.length; i++) {
-//         if (typeof strNew === "string" || str.length < pos) {
-//             return strNew + " " + str;
-//         } else if (typeof strNew === "string" && typeof pos === "number") {
-//             return 
-//         }
-//     }
-// };
-// console.log(insert("sava", "qq"));
+/* Write a program to insert a string within a string at a 
+particular position (default is 1, beginning of a string). 
 
+"My random string", "JS " -> "JS My random string"
+"My random string", "JS ", 10 -> "My random JS string"
 
-function insertString(input, string, place) {
-    for (var i = 1; i < string.length, i++) {
-        
+*/
+
+function putYourWord(put, string, place) {
+    var firstChange = "";
+    var secondChange = "";
+    var final = "";
+
+    for (var i = 0; i < string.length; i++) {
+        if (i < place) {
+            firstChange += string[i];
+        } else if (i >= place) {
+            secondChange += string[i];
+        }
     }
+    final = firstChange + " " + put + " " + secondChange;
+
+    if (place === " " || typeof place === "undefined") {
+        final = put + " " + string;
+    }
+
+    return final;
 }
+
+console.log(putYourWord("Sava", "Just glory hole and milfs like.", 25));
+
