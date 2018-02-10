@@ -1,3 +1,5 @@
+/*  Write a function that calculates a number of appearances
+ of a given number in a given array.  */
 
 function provera(array, num) {
     var sum = 0;
@@ -6,10 +8,10 @@ function provera(array, num) {
             sum += array[i];
         }
     }
-    return sum/num;
+    return sum / num;
 }
 
 
-var result = provera([1, 3, 5, 3, 9, 15,5, 3], 16)
+var result = provera([1, 3, 5, 3, 9, 15, 1, 3], 1)
 
 console.log(result)
