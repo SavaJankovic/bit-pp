@@ -8,14 +8,18 @@ Output: The array is symmetric.
 Input array: [3, 4, 12, 8]
     Output: The array isn’t symmetric. */
 
-function symmetric(arr){
+function symmetric(arr) {
     var sArr = [];
     var counter = 0;
-    for(var i=arr.length-1; i >= 0; i-- ){
-      sArr[counter] = arr[i];
-      counter++;
+    for (var i = arr.length - 1; i >= 0; i--) {
+        sArr[counter] = arr[i];
+        counter++;
     }
-
-    return sArr;
+    if (sArr[0] == arr[0] && sArr[1] === arr[1] && sArr[2] == arr[2]) {
+        return true;
+    } else {
+        return false;
+    }
+ /// nisam uradio do kraja
 }
-console.log(symmetric([2,3,4,5,6]));
+console.log(symmetric([2, 3, 4, 5, 6, 4, 4, 3, 2]));
