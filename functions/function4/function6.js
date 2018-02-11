@@ -20,6 +20,5 @@ function symmetric(arr) {
     } else {
         return false;
     }
- /// nisam uradio do kraja
 }
 console.log(symmetric([2, 3, 4, 5, 6, 4, 4, 3, 2]));
