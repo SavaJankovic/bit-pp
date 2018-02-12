@@ -1,3 +1,5 @@
+"use strict";
+
 var arr = [80, 77, 88, 95, 68]
 var avrg = 0;
 

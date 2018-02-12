@@ -2,6 +2,8 @@
 provided separator. If separator is not provided, 
 use “-” (dash) as the default separator. */
 
+"use strict";
+
 function convert(string, char) {
     var arr = [];
     for (var i = 0; i < string.length; i++) {

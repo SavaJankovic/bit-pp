@@ -2,6 +2,8 @@
 Passing a parameter 'n' will return the last 'n' elements
  of the array. */
 
+ "use strict";
+
 function lastElement(arr, n) {
     var newArr = [];
     var minus = -1;

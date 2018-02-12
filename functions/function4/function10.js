@@ -4,6 +4,7 @@ given position p in the array a. If the value of the
  the error message. 
 Input: e = 78, p = 3, a = [2, -2, 33, 12, 5, 8]
 Output: [2, -2, 33, 78, 12, 5, 8] */
+"use strict";
 
 function elemet(arr, pos, elem) {
     var newArr = [];

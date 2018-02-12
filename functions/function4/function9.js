@@ -3,6 +3,8 @@ element e from the array a.
 Input: e = 2, a = [4, 6, 2, 8, 2, 2]
 Output array: [4, 6, 8]
  */
+"use strict";
+
 function delet(arr, e) {
     var newArr = [];
     var counter = 0;

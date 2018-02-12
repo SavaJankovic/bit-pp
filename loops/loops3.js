@@ -1,5 +1,6 @@
-var num = [1,3,4,5,6,7,8];
+"use strict";
 
+var num = [1,3,4,5,6,7,8];
 var sum = 0;
 var prod = 1;
 

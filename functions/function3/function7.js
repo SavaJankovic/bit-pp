@@ -1,4 +1,6 @@
 /* Write a function that says whether a number is perfect. */
+"use strict";
+
 function perfectNum(num) {
     var x = 0;
     for (var i = 1; i <= num / 2; i++) {

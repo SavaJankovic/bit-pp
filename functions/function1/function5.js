@@ -6,6 +6,8 @@
                   *    *
                   *    *
                   *****                 */
+"use strict";
+
 
 function square(num) {
   var draw = "";

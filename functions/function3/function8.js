@@ -1,5 +1,7 @@
 /* Write a function to find a word within a string. */
 
+"use strict";
+
 function finder(word, find) {
     var a = 0;
     var b = 0;

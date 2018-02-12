@@ -1,5 +1,6 @@
 /*Write a program that finds the minimum of a 
 given array and prints out its value and index */
+"use strict";
 
 function min(arr) {
     var minNum = arr[0];

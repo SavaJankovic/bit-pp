@@ -1,5 +1,6 @@
 /*Write a program that multiplies 
 every positive element of a given array by 2. */
+"use strict";
 
 function multi(arr) {
     var newArr = [];

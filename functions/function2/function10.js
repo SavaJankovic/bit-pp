@@ -3,6 +3,8 @@ and add “...” at the
  end of newly created string. */
 
 // this is last n characters
+"use strict";
+
 function cuter(word, n) {
     var points = "...";
     var newWord = "";

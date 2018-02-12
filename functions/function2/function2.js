@@ -1,5 +1,6 @@
 /* Write a function to check whether
  a string is blank or not.  */
+ "use strict";
 
 function check(a) {
     if (a === "") {

@@ -3,6 +3,8 @@ array into a string skipping elements that are undefined,
 null, NaN or Infinity.
 [NaN, 0, 15, false, -22, '', undefined, 47, null]
 */
+"use strict";
+
 function join(arr) {
     var string = "";
     for (var i = 0; i < arr.length; i++) {

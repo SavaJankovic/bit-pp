@@ -1,4 +1,6 @@
 /* Write a function to hide email address. */
+"use strict";
+
 function hide(email) {
     var hideEmail = "";
     var stars = "***";
