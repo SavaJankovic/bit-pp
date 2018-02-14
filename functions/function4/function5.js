@@ -2,6 +2,8 @@
 elements in the array.
 Input array: [3, 11, -5, -3, 2]
 Output: 16   */
+"use strict";
+
 
 function positive(arr) {
     var posNum = [];

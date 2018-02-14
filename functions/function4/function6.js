@@ -7,6 +7,7 @@ Output: The array is symmetric.
 
 Input array: [3, 4, 12, 8]
     Output: The array isn’t symmetric. */
+    "use strict";
 
 function symmetric(arr) {
     var sArr = [];

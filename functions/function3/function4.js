@@ -1,6 +1,8 @@
 /* Write a function that reverses a number. 
 The result must be a number. */ 
 
+"use strict";
+
 function reverse(arr){
     var reverseArr = [];
     for(var i= arr.length -1 ; i > -1; i--){

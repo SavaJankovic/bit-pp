@@ -1,6 +1,8 @@
 /* Write a function to create a specified number of 
 elements with pre-filled numeric value array. */
 
+"use strict";
+
 function preFilled(num1, num2) {
     var arr = [];
     for (var i = 0; i < num1; i++) {

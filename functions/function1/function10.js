@@ -2,6 +2,8 @@
  of a letter a in a given string. Modify the function so
  it calculates the number of both letters a and A.  */
 
+ "use strict";
+
 function slova(array, l, uL) {
     var brojSlova = "";
     for (var i = 0; i < array.length; i++) {

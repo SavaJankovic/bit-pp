@@ -4,6 +4,8 @@ checks if the number is prime or not. Note: A prime number
 greater than 1 that has no positive divisors other
 than 1 and itself.*/
 
+"use strict";
+
 function primeNumber(n) {
 
     if (n === 1) {

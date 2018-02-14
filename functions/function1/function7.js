@@ -1,5 +1,6 @@
 /* Write a function that 
 calculates a number of digits of a given number.  */
+"use strict";
 
 function zbir(a) {
     var b = "";

@@ -2,6 +2,8 @@
  Space in a string should be 
  represented as “null” in new array.  */
 
+ "use strict";
+
 function convert(string) {
     var arr = [];
     for (var i = 0; i < string.length; i++) {

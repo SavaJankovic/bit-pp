@@ -5,6 +5,7 @@ particular position (default is 1, beginning of a string).
 "My random string", "JS ", 10 -> "My random JS string"
 
 */
+"use strict";
 
 function putYourWord(put, string, place) {
     var firstChange = "";
@@ -27,5 +28,5 @@ function putYourWord(put, string, place) {
     return final;
 }
 
-console.log(putYourWord("Sava", "Just glory hole and milfs like.", 25));
+console.log(putYourWord("Sava", "Just Nba like.", 9));
 

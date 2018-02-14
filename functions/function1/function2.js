@@ -1,4 +1,5 @@
 // Write a function that checks if a given number is odd.
+"use strict";
 
 function check(a) {
     if (a % 2 === 0) {

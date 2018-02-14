@@ -1,15 +1,11 @@
-/* Write a program to find the most frequent
- item of an array. */
- "use strict";
+/* Write a function to find the 
+element that occurs most frequently. */
 
-
-function find() {
-    var arr = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+function find(arr) {
     var mf = 1;
     var m = 0;
     var item;
     for (var i = 0; i < arr.length; i++) {
-
         for (var j = i; j < arr.length; j++) {
             if (arr[i] == arr[j]) {
                 m++;
@@ -26,4 +22,4 @@ function find() {
     return item + " repeat " + mf + " times";
 
 }
-console.log(find());
+console.log(find([1, 2, 3, 4, 5, 6, 2, 3, 4, 5, 3, 2]));

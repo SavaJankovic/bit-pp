@@ -1,4 +1,5 @@
 /* Write a program to filter out falsy values from the array. */
+"use strict";
 
 function falsy(arr) {
     var newArray = [];

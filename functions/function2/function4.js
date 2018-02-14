@@ -1,5 +1,6 @@
 /* Write a function to count the number of 
   letter occurrences in a string. */
+  "use strict";
 
 function provera(word, letter) {
     var sum = "";

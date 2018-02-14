@@ -4,6 +4,8 @@ The result should be in human numeration form.
 If there are no occurrences of the character,
 the function should return -1. */
 
+"use strict";
+
 function find(word, letter) {
     for (var i = 0; i < word.length; i++) {
         if (word[i] === letter) {

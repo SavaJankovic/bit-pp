@@ -1,5 +1,6 @@
 /* Write a program that finds the second largest number 
 and prints out its value.   */
+"use strict";
 
 function secLar(arr) {
     var largestNum = arr[0];
