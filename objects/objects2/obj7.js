@@ -34,14 +34,25 @@
 
 // console.log(check("s1sa"));
 
-function check(string) {
-    if (string.length == 3 || string.length == 6) {
-        for (var i = 0; i < string.length; i++) {
-            if ((string[i] < 10 && string[i] > 0) || str[i] == "a" || str[i] == "b" || string[i] == "c" || string[i] == "e" || sting[i] == "f") {
+// function check(string) {
+//     if (string.length == 3 || string.length == 6) {
+//         for (var i = 0; i < string.length; i++) {
+//             if ((string[i] < 10 && string[i] > 0) || str[i] == "a" || str[i] == "b" || string[i] == "c" || string[i] == "e" || sting[i] == "f") {
                    
-            }
-        }
+//             }
+//         }
 
 
 
+//     }
+
+function check (string){
+    if(typeof parseInt(string.toString(), 16) === "number" && !isNaN(string)){
+        return true;
+    } else{
+        return false;
     }
+}
+
+console.log(check("1f1f"));
+
