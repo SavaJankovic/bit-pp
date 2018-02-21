@@ -79,7 +79,7 @@ Display festival’s data using getData method.
         this.genre = genre;
         this.getData = function () {
             return this.title + ", " + this.length + " min, " + this.genre.getData();
-        };
+        }; 
     };
 
     function Program(date) {
