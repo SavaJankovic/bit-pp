@@ -7,7 +7,7 @@
         northamerica: "NA",
         southamerica: "SA",
         australia: "AU"
-    };
+    }
 
     Object.freeze(continents);
 
@@ -22,26 +22,28 @@
         this.surname = surname;
         this.dateOfBirth = new Date(dateOfBirth);
 
-
-
-        this.getData = function () {
-            var today = new Date();
-
-            var personAge = today.getFullYear() - this.dateOfBirth.getFullYear();
-
-            return this.name + " " + this.surname + ", " + personAge + " years";
-        }
-
     }
+
+    Person.prototype.getData = function () {
+        var today = new Date();
+
+        var personAge = today.getFullYear() - this.dateOfBirth.getFullYear();
+
+        return this.name + " " + this.surname + ", " + personAge + " years";
+    }
+
 
     function Player(country, betAmount, person) {
         this.betAmount = betAmount;
         this.country = country.slice(0, 2).toUpperCase();
         this.person = person;
-        this.getData = function () {
-            return this.country + ", " + this.betAmount.toFixed(2) + " eur" + ", " + this.person.getData();
-        }
     }
+
+
+    Player.prototype.getData = function () {
+        return this.country + ", " + this.betAmount.toFixed(2) + " eur" + ", " + this.person.getData();
+    }
+
 
     function Address(street, number, postalCode, city, country) {
         this.country = country.slice(0, 2).toUpperCase();
@@ -50,76 +52,82 @@
         this.street = street;
         this.number = number;
         var codeCity = this.postalCode + " " + this.city;
-
-        this.getData = function () {
-            return this.streetAndNum + ", " + codeCity + ", " + this.country;
-
-        }
     }
+
+    Address.prototype.getData = function () {
+        return this.streetAndNum + ", " + codeCity + ", " + this.country;
+
+    }
+
 
     function BettingPlace(address) {
         this.address = address;
         this.listOfPlayers = [];
+    }
 
 
-        this.addPlayers = function (player) {
-            this.listOfPlayers.push(player);
-        };
 
-        this.sumAllBets = function () {
-            var counter = 0;
-            for (var i = 0; i < this.listOfPlayers.length; i++) {
-                var x = this.listOfPlayers[i];
-                counter += x.betAmount;
-            }
+    BettingPlace.prototype.addPlayers = function (player) {
+        this.listOfPlayers.push(player);
+    }
 
-            return counter;
+    BettingPlace.prototype.sumAllBets = function () {
+        var counter = 0;
+        for (var i = 0; i < this.listOfPlayers.length; i++) {
+            var x = this.listOfPlayers[i];
+            counter += x.betAmount;
         }
 
-        this.getData = function () {
-            return this.address.street + ", " + this.address.postalCode + " " + this.address.city + ", sum of all bets: " + this.sumAllBets() + "eur";
-        };
+        return counter;
     }
+
+    BettingPlace.prototype.getData = function () {
+        return this.address.street + ", " + this.address.postalCode + " " + this.address.city + ", sum of all bets: " + this.sumAllBets() + "eur";
+    }
+
+
 
     function BettingHouse(competition) {
         this.competition = competition;
         this.listOfBettingPlaces = [];
 
-
-        this.nameOfCompetition = function () {
-            return this.competition;
-        }
-        this.addBettingPlaces = function (bettingPlace) {
-            this.listOfBettingPlaces.push(bettingPlace)
-        }
-
-
-
-        this.displayAll = function () {
-            var display = "";
-            var count = 0;
-            var output = "";
-            var zemlja = 0;
-            for (var i = 0; i < this.listOfBettingPlaces.length; i++) {
-                var x = this.listOfBettingPlaces[i];
-                count += x.listOfPlayers.length;
-                display += x.getData() + "\n\t";
-
-                for (var  j = 0; j < x.listOfPlayers.length; j++) {
-                    var y = x.listOfPlayers[j];
-                    display += "\t\t" + y.getData() + "\n\t";
-                }
-            }
-
-
-            var firstDisplay = this.competition + ", " + this.listOfBettingPlaces.length + " betting places, " + count + " bets";
-            return firstDisplay + "\n\t" + display + "\nThere are 1 bets from Serbia";
-        }
     }
+
+    BettingHouse.prototype.nameOfCompetition = function () {
+        return this.competition;
+    }
+
+
+    BettingHouse.prototype.addBettingPlaces = function (bettingPlace) {
+        this.listOfBettingPlaces.push(bettingPlace)
+    }
+
+
+    BettingHouse.prototype.displayAll = function () {
+        var display = "";
+        var count = 0;
+        var output = "";
+        var zemlja = 0;
+        for (var i = 0; i < this.listOfBettingPlaces.length; i++) {
+            var x = this.listOfBettingPlaces[i];
+            count += x.listOfPlayers.length;
+            display += x.getData() + "\n\t";
+
+            for (var j = 0; j < x.listOfPlayers.length; j++) {
+                var y = x.listOfPlayers[j];
+                display += "\t\t" + y.getData() + "\n\t";
+            }
+        }
+
+        var firstDisplay = this.competition + ", " + this.listOfBettingPlaces.length + " betting places, " + count + " bets";
+        return firstDisplay + "\n\t" + display + "\nThere are 1 bets from Serbia";
+    }
+
+
 
     function cretePlayer(country, betAmount, person) {
         return new Player(country, betAmount, person)
-    };
+    }
 
     function createBettingPlace(address) {
         return new BettingPlace(address);
@@ -153,5 +161,4 @@
     bettingHouse1.addBettingPlaces(bettingPlace2);
 
     console.log(bettingHouse1.displayAll());
-
 })();

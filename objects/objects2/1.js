@@ -27,72 +27,84 @@
 (function () {
 
     function Product(name, price, expirationDate) {
-        this.productID = (function () {
-            var min = Math.ceil(10000);
-            var max = Math.floor(99999);
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        })();
+
 
         this.name = name;
         this.price = parseFloat(price.toFixed(2));
         this.expirationDate = new Date(expirationDate);
 
-        this.getInfo = function () {
-            var firstLetter = this.name.charAt(0).toUpperCase();
-            var lastLetter = this.name.charAt(this.name.length - 1).toUpperCase();
-            var final = firstLetter + lastLetter + this.productID;
-            var finalDate = this.expirationDate.getDate() + "-" + (this.expirationDate.getMonth() + 1) + "-" + this.expirationDate.getFullYear();
 
-            return final + ", " + this.name + ", " + this.price;
-
-        };
 
     };
 
+    Product.prototype.getInfo = function () {
+        var firstLetter = this.name.charAt(0).toUpperCase();
+        var lastLetter = this.name.charAt(this.name.length - 1).toUpperCase();
+        var final = firstLetter + lastLetter + this.productID;
+        var finalDate = this.expirationDate.getDate() + "-" + (this.expirationDate.getMonth() + 1) + "-" + this.expirationDate.getFullYear();
+
+        return final + ", " + this.name + ", " + this.price;
+
+    }
+    Product.prototype.productID = (function () {
+        var min = Math.ceil(10000);
+        var max = Math.floor(99999);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    })()
+
+
+
     function ShoppingBag() {
         this.list = [];
+    }
 
-        this.addProduct = function (product) {
-            var currentDate = new Date();
+    ShoppingBag.prototype.addProduct = function (product) {
+        var currentDate = new Date();
 
-            if (product.expirationDate.getTime() > currentDate.getTime()) {
-                this.list.push(product);
-            }
-
-        };
-
-        this.averagePrice = function (price) {
-            var totalPrice = 0;
-
-            for (let i = 0; i < this.list.length; i++) {
-                totalPrice += this.list[i].price;
-
-            }
-            var averagePrice = totalPrice / this.list.length;
-            return parseFloat(averagePrice.toFixed(2));
-        };
-        this.getMostExpensive = function () {
-            var mostExpensive = 0;
-            var indexMost;
-            for (let i = 0; i < this.list.length; i++) {
-                if (this.list[i].price > mostExpensive) {
-                    mostExpensive = this.list[i].price;
-                    indexMost = i;
-                }
-
-            }
-            return this.list[indexMost];
-        };
-        this.calculateTotalPrice = function () {
-            var totalPrice = 0;
-
-            for (let i = 0; i < this.list.length; i++) {
-                totalPrice += this.list[i].price;
-            }
-            return totalPrice;
+        if (product.expirationDate.getTime() > currentDate.getTime()) {
+            this.list.push(product);
         }
 
     }
+
+    ShoppingBag.prototype.averagePrice = function (price) {
+        var totalPrice = 0;
+
+        for (let i = 0; i < this.list.length; i++) {
+            totalPrice += this.list[i].price;
+
+        }
+        var averagePrice = totalPrice / this.list.length;
+        return parseFloat(averagePrice.toFixed(2));
+    }
+
+
+    ShoppingBag.prototype.getMostExpensive = function () {
+        var mostExpensive = 0;
+        var indexMost;
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i].price > mostExpensive) {
+                mostExpensive = this.list[i].price;
+                indexMost = i;
+            }
+
+        }
+        return this.list[indexMost];
+    }
+
+
+    ShoppingBag.prototype.calculateTotalPrice = function () {
+        var totalPrice = 0;
+
+        for (let i = 0; i < this.list.length; i++) {
+            totalPrice += this.list[i].price;
+        }
+        return totalPrice;
+    }
+
+
+
+
 
     function PaymentCard(accountBalance) {
         this.accountBalance = parseFloat(accountBalance.toFixed(2));
@@ -105,7 +117,7 @@
         } else {
             return "Insufficient price!"
         }
-    };
+    }
 
     var product1 = new Product("Banana", 124.45565, "2018-6-12");
     var product2 = new Product("Jabuka", 60, "2018-6-12");

@@ -63,76 +63,87 @@ Display festival’s data using getData method.
     function Genre(name) {
         this.name = name;
 
-        this.getData = function () {
-            var firstLetter = this.name.charAt(0);
-            var lastLetter = this.name.charAt(name.length - 1);
-            var firstLast = firstLetter + lastLetter;
+    }
 
-            return firstLast.toUpperCase();
+    Genre.prototype.getData = function () {
+        var firstLetter = this.name.charAt(0);
+        var lastLetter = this.name.charAt(this.name.length - 1);
+        var firstLast = firstLetter + lastLetter;
 
-        };
-    };
+        return firstLast.toUpperCase();
+
+    }
+
 
     function Movie(title, length, genre) {
         this.title = title;
         this.length = length;
         this.genre = genre;
-        this.getData = function () {
-            return this.title + ", " + this.length + " min, " + this.genre.getData();
-        }; 
-    };
+
+    }
+
+    Movie.prototype.getData = function () {
+        return this.title + ", " + this.length + " min, " + this.genre.getData();
+    }
+
+
+
 
     function Program(date) {
         this.date = new Date(date);
         this.listMovies = [];
 
-        this.getNumOfMovies = function () {
-            return this.listMovies.length;
-        };
-
-
-        this.addMovie = function (movie) {
-            this.listMovies.push(movie);
-        };
-
-
-        this.getData = function () {
-            var dateProgram = this.date.getDate() + " - " + (this.date.getMonth() + 1) + " - " + this.date.getFullYear();
-            var programLength = 0;
-            var movieList = [];
-            for (var i = 0; i < this.listMovies.length; i++) {
-                programLength += this.listMovies[i].length;
-                movieList += "\n\t\t" + this.listMovies[i].getData();
-            }
-
-            return dateProgram + ", " + "program length of " + this.getNumOfMovies() + " movies is " + programLength + " min" + movieList;
-        };
-
     };
+
+    Program.prototype.getNumOfMovies = function () {
+        return this.listMovies.length;
+    }
+
+
+    Program.prototype.getData = function () {
+        var dateProgram = this.date.getDate() + " - " + (this.date.getMonth() + 1) + " - " + this.date.getFullYear();
+        var programLength = 0;
+        var movieList = [];
+        for (var i = 0; i < this.listMovies.length; i++) {
+            programLength += this.listMovies[i].length;
+            movieList += "\n\t\t" + this.listMovies[i].getData();
+        }
+
+        return dateProgram + ", " + "program length of " + this.getNumOfMovies() + " movies is " + programLength + " min" + movieList;
+    }
+
+    Program.prototype.addMovie = function (movie) {
+        this.listMovies.push(movie);
+    }
+
+
+
 
     function Festival(name) {
         this.name = name;
         this.listOfPrograms = [];
         this.numOfMoviesAll = 0;
 
-        this.addProgram = function (program) {
-            this.listOfPrograms.push(program);
-        };
-
-        this.getData = function () {
-            var nameFestival = "";
-
-            for (var i = 0; i < this.listOfPrograms.length; i++) {
-                nameFestival += "\n\t" + this.listOfPrograms[i].getData();
-                this.numOfMoviesAll += this.listOfPrograms[i].getNumOfMovies();
-            }
-
-            return this.name + " festival has " + this.numOfMoviesAll + " moves titles" + nameFestival;
+    }
 
 
-        };
 
-    };
+
+    Festival.prototype.getData = function () {
+        var nameFestival = "";
+
+        for (var i = 0; i < this.listOfPrograms.length; i++) {
+            nameFestival += "\n\t" + this.listOfPrograms[i].getData();
+            this.numOfMoviesAll += this.listOfPrograms[i].getNumOfMovies();
+        }
+
+        return this.name + " festival has " + this.numOfMoviesAll + " moves titles" + nameFestival;
+
+    }
+
+    Festival.prototype.addProgram = function (program) {
+        this.listOfPrograms.push(program);
+    }
 
     var action = new Genre("action");
     var triller = new Genre("triller");

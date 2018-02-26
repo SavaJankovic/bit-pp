@@ -66,26 +66,31 @@ Airport: Nikola Tesla, total passengers: 4
         this.name = name;
         this.surname = surname;
 
-        this.getData = function () {
-            return this.name + " " + this.surname;
-        };
+    }
+
+
+    Person.prototype.getData = function () {
+        return this.name + " " + this.surname;
     }
 
     function Seat(category) {
         this.number = Math.floor(Math.random(100 - 10) * 100);
         this.category = category || "e";
-
-        this.getData = function () {
-            return this.number + ", " + this.category;
-        };
     }
+
+    Seat.prototype.getData = function () {
+        return this.number + ", " + this.category;
+    }
+
 
     function Passenger(person, seat) {
         this.person = person;
         this.seat = seat;
-        this.getData = function () {
-            return this.seat.getData() + ", " + this.person.getData();
-        };
+    }
+
+
+    Passenger.prototype.getData = function () {
+        return this.seat.getData() + ", " + this.person.getData();
     }
 
     function Flight(destination, date) {
@@ -93,53 +98,50 @@ Airport: Nikola Tesla, total passengers: 4
         this.destination = destination;
         this.date = new Date(date);
         this.listPass = [];
-        this.returnDate = function () {
-            return this.date.getDate() + ". " + this.date.getMonth() + ". " + this.date.getFullYear();
-        };
-
-        this.getData = function () {
-            var x = "";
-            for (var i = 0; i < this.listPass.length; i++) {
-                var lp = this.listPass[i];
-                x += "\n\t\t" + lp.getData();
-            
-            }
-            return this.returnDate() + " " + this.destination + x;
-        };
-
-        this.addPassenger = function (pass) {
-            this.listPass.push(pass);
-        };
     }
+
+    Flight.prototype.addPassenger = function (pass) {
+        this.listPass.push(pass);
+    }
+
+
+    Flight.prototype.getData = function () {
+        var x = "";
+        for (var i = 0; i < this.listPass.length; i++) {
+            var lp = this.listPass[i];
+            x += "\n\t\t" + lp.getData();
+
+        }
+        return this.returnDate() + " " + this.destination + x;
+    }
+
+    Flight.prototype.returnDate = function () {
+        return this.date.getDate() + ". " + this.date.getMonth() + ". " + this.date.getFullYear();
+    }
+
+
 
     function Airport() {
         this.name = "Nikola Tesla";
         this.listOfFlights = [];
-        this.addFlight = function (flight) {
-            this.listOfFlights.push(flight);
-        };
+    }
 
-        this.getData = function () {
-            var airportF = "";
-            var total = 0;
+    Airport.prototype.getData = function () {
+        var airportF = "";
+        var total = 0;
 
-            for (var i = 0; i < this.listOfFlights.length; i++) {
-                var flight = this.listOfFlights[i];
-                total += flight.listPass.length;
-                airportF += "\n\t" + flight.getData();
-            }
-
-
-
-            return "Airport : " + this.name + ", " + " total passenger : " + total + " " + airportF;
-        };
-
-
-
+        for (var i = 0; i < this.listOfFlights.length; i++) {
+            var flight = this.listOfFlights[i];
+            total += flight.listPass.length;
+            airportF += "\n\t" + flight.getData();
+        }
+        return "Airport : " + this.name + ", " + " total passenger : " + total + " " + airportF;
     }
 
 
-
+    Airport.prototype.addFlight = function (flight) {
+        this.listOfFlights.push(flight);
+    }
 
 
     function createFlight(dest, date) {
@@ -149,9 +151,6 @@ Airport: Nikola Tesla, total passengers: 4
     function createPassenger(name1, seat1) {
         return new Passenger(name1, seat1);
     }
-
-
-
 
 
     var name1 = new Person("Sava", "Jankovic");
@@ -186,7 +185,4 @@ Airport: Nikola Tesla, total passengers: 4
     console.log(air1.getData());
 
 
-
-
 })();
-    
