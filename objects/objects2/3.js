@@ -183,6 +183,7 @@ Airport: Nikola Tesla, total passengers: 4
 
 
     console.log(air1.getData());
+    
 
 
 })();
