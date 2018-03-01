@@ -1,4 +1,5 @@
 var listOfMovie = [];
+var movie;
 
 function Movie(name, genre, length) {
     this.name = name;
@@ -13,20 +14,15 @@ Movie.prototype.getData = function () {
 function Program(date) {
     this.date = new Date(date);
     this.movies = [];
+    this.numMovies = 0;
+    this.programDuration = 0;
 }
 
-
 Program.prototype.getData = function () {
-    var minAllMovie = 0;
-    var numOfMovies = listOfMovie.length;
+
     var datum = this.date.getDate() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getFullYear() + " year";
 
-    for (var i = 0; i < listOfMovie.length; i++) {
-
-        minAllMovie += listOfMovie[i].length;
-    }
-
-    return datum + ", " + numOfMovies + " movies, " + " duration: " + minAllMovie + "min";
+    return datum + ", " + this.numMovies + " num of movies, " + this.duration + " duration length";
 }
 
 
@@ -41,7 +37,7 @@ function createMovie() {
     var select = document.querySelector("#genreMovie");
     var genre = select.options[select.selectedIndex].text;
 
-    var movie = new Movie(title, genre, length);
+    movie = new Movie(title, genre, length);
 
     var liMovie = document.createElement("li");
     var textMovie = document.createTextNode(movie.getData());
