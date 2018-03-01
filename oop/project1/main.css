@@ -41,6 +41,13 @@ select {
     cursor: pointer;
     color: white;
 }
+.finalBtn{
+    width: 90%;
+    height: 50px;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
 
 h2 {
     text-align: center;

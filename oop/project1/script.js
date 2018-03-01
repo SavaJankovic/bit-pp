@@ -12,24 +12,22 @@ Movie.prototype.getData = function () {
 
 function Program(date) {
     this.date = new Date(date);
+    this.movies = [];
 }
 
 
 Program.prototype.getData = function () {
     var minAllMovie = 0;
     var numOfMovies = listOfMovie.length;
-    var datum = this.date.getDate() + (this.date.getMonth() + 1) + this.date.getFullYear();
+    var datum = this.date.getDate() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getFullYear() + " year";
 
     for (var i = 0; i < listOfMovie.length; i++) {
 
         minAllMovie += listOfMovie[i].length;
     }
 
-    return datum + ", " + numOfMovies + " movies, "+ " duration: " + minAllMovie + "min";
+    return datum + ", " + numOfMovies + " movies, " + " duration: " + minAllMovie + "min";
 }
-
-
-
 
 
 
@@ -47,11 +45,21 @@ function createMovie() {
 
     var liMovie = document.createElement("li");
     var textMovie = document.createTextNode(movie.getData());
-
     liMovie.appendChild(textMovie);
     ulMovie.appendChild(liMovie);
 
     listOfMovie.push(movie);
+
+
+
+    var addingMovie = document.querySelector("#finalMovie");
+    var optionMovie = document.createElement("option");
+    optionMovie.value = listOfMovie.length - 1;
+    addingMovie.appendChild(optionMovie);
+
+    var nameOfMovie = document.createTextNode(movie.getData());
+
+    optionMovie.appendChild(nameOfMovie);
 
 }
 
@@ -72,14 +80,25 @@ function createProgram() {
 
     var program1 = new Program(dateProgram);
 
-
     var liProgram = document.createElement("li");
     var dateOfProgram = document.createTextNode(program1.getData());
 
     liProgram.appendChild(dateOfProgram);
     ulProgram.appendChild(liProgram);
 
+
+    var dateOfProgram1 = document.createTextNode(program1.getData());
+    var addingProgram = document.querySelector("#finalProgram");
+    var optionProgram = document.createElement("option");
+    optionProgram.value = listOfMovie.length - 1;
+    addingProgram.appendChild(optionProgram);
+
+    var dateProgram = document.createTextNode(dateOfProgram1);
+
+    optionProgram.appendChild(dateOfProgram1);
+
 }
+
 document.querySelector(".createProgram").addEventListener("click", function () {
     createProgram();
 });
