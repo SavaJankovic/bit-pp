@@ -1,5 +1,5 @@
 var listOfMovie = [];
-var movie;
+var listOfProgram = [];
 
 function Movie(name, genre, length) {
     this.name = name;
@@ -22,7 +22,7 @@ Program.prototype.getData = function () {
 
     var datum = this.date.getDate() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getFullYear() + " year";
 
-    return datum + ", " + this.numMovies + " num of movies, " + this.duration + " duration length";
+    return datum + ", " + this.numMovies + " num of movies, " + this.programDuration + " duration length";
 }
 
 
@@ -82,6 +82,7 @@ function createProgram() {
     liProgram.appendChild(dateOfProgram);
     ulProgram.appendChild(liProgram);
 
+    listOfProgram.push(program1);
 
     var dateOfProgram1 = document.createTextNode(program1.getData());
     var addingProgram = document.querySelector("#finalProgram");
@@ -98,3 +99,30 @@ function createProgram() {
 document.querySelector(".createProgram").addEventListener("click", function () {
     createProgram();
 });
+
+
+
+
+function addMovieToProgram() {
+    var selectedIndex = document.querySelector("#finalMovie").selectedIndex;
+    var selectMovie = listOfMovie[selectedIndex];
+
+
+    var selectedIndexProgram = document.querySelector("#finalProgram").selectedIndex;
+    var selectProgram = listOfProgram[selectedIndexProgram];
+
+    x.push(selectMovie);
+
+
+
+
+    var addMP = document.querySelector("#final");
+    var addUl = document.createElement("ul");
+
+    addMP.appendChild(addUl);
+
+    var addList = document.createElement("li");
+
+    addUl.appendChild(addList);
+
+}
