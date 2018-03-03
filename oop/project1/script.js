@@ -25,6 +25,17 @@ Program.prototype.getData = function () {
     return datum + ", " + this.numMovies + " num of movies, " + this.programDuration + " duration length";
 }
 
+Program.prototype.getNumOfMovies = function () {
+    return this.movies.length;
+}
+
+Program.prototype.getMoviesDuration = function () {
+    var totalDuration = 0;
+    this.movies.forEach(function (elem) {
+        totalDuration += elem.length;
+    })
+    return totalDuration;
+}
 
 
 var divMovie = document.querySelector("#newMovie");
@@ -104,16 +115,14 @@ document.querySelector(".createProgram").addEventListener("click", function () {
 
 
 function addMovieToProgram() {
-    var selectedIndex = document.querySelector("#finalMovie").selectedIndex;
+    var selectedIndex = document.querySelector("#finalMovie").value;
     var selectMovie = listOfMovie[selectedIndex];
 
 
-    var selectedIndexProgram = document.querySelector("#finalProgram").selectedIndex;
+    var selectedIndexProgram = document.querySelector("#finalProgram").value;
     var selectProgram = listOfProgram[selectedIndexProgram];
 
-    x.push(selectMovie);
-
-
+    selectProgram.movies.push(selectMovie);
 
 
     var addMP = document.querySelector("#final");
@@ -125,4 +134,9 @@ function addMovieToProgram() {
 
     addUl.appendChild(addList);
 
+    //li.textContent = selectProgram.getNumOfMovies() + "dahdkwah" +
+
 }
+document.querySelector(".finalBtn").addEventListener("click", function () {
+    addMovieToProgram();
+});
