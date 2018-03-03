@@ -20,9 +20,10 @@ function Program(date) {
 
 Program.prototype.getData = function () {
 
-    var datum = this.date.getDate() + "-" + (this.date.getMonth() + 1) + "-" + this.date.getFullYear() + " year";
+    var datum = this.date.getDate() + "/" + (this.date.getMonth() + 1) + "/" + this.date.getFullYear();
 
-    return datum + ", " + this.numMovies + " num of movies, " + this.programDuration + " duration length";
+    // return datum + ", " + this.numMovies + " num of movies, " + this.programDuration + " duration length";
+    return datum;
 }
 
 Program.prototype.getNumOfMovies = function () {
@@ -133,8 +134,7 @@ function addMovieToProgram() {
     var addList = document.createElement("li");
 
     addUl.appendChild(addList);
-
-    //li.textContent = selectProgram.getNumOfMovies() + "dahdkwah" +
+    addList.textContent = selectProgram.getData() + ",  " + selectProgram.getNumOfMovies() + " num of movies, " + selectProgram.getMoviesDuration() + " duration of movies.";
 
 }
 document.querySelector(".finalBtn").addEventListener("click", function () {
