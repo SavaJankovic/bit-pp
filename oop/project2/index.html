@@ -30,17 +30,16 @@
         </label>
         <label for="">
             Status
-            <select>
-                <option value="">-</option>
-                <option value="">-</option>
-                <option value="">-</option>
+            <select id="selectOption">
+                <option value="regular">regular</option>
+                <option value="remote">remote</option>
+                <option value="graduated">graduated</option>
+
             </select>
         </label>
         <input type="button" name="" value="Create Student" id="createStudent">
-
-
+        <div id="textStudent"></div>
     </div>
-
 
     <div class="wrap professor">
         <h2>Professor</h2>
@@ -57,105 +56,100 @@
         <br>
         <label for="">
             Salary:
-            <input type="number" name="" id="professorNumber">
+            <input type="number" name="" id="professorSalary">
         </label>
         <label for="">
             Office number:
-            <input type="number" name="" id="professorNumber">
+            <input type="number" name="" id="professorOffice">
         </label>
         <input type="button" name="" value="Create Professor" id="createProfessor">
+
+        <div id="textProfessor"></div>
     </div>
 
-    
+
     <div class="wrap addlist">
-            <h2>Add to list</h2>
-            <label for="">
-                    Subject:
-                    <select>
-                        <option value="">-</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </label>
-            <br>
-            <label for="">
-                   Professor:
-                    <select>
-                        <option value="">-</option>
-                        <option value="">-</option>
-                        <option value="">-</option>
-                    </select>
-                </label>
-            <br>
-            <label for="">
-                    Grade:
-                    <select>
-                        <option value="">-</option>
-                        <option value="">-</option>
-                        <option value="">-</option>
-                    </select>
-                </label>
-                <label for="">
-                     Student:
-                        <select>
-                            <option value="">-</option>
-                            <option value="">-</option>
-                            <option value="">-</option>
-                        </select>
-                    </label>
-            <input type="button" name="" value="Add to list" id="addToList">
+        <h2>Add to list</h2>
+        <label for="">
+            Subject:
+            <select>
+                <option value="">Javascipt</option>
+                <option value="">Java</option>
+                <option value="">C</option>
+                <option value="">C++</option>
+            </select>
+        </label>
+        <br>
+        <label for="">
+            Professor:
+            <select id="addProfSelect">
+                <option value=""> Select professor: </option>
+            </select>
+        </label>
+        <br>
+        <label for="">
+            Grade:
+            <select>
+                <option value="">Select grade: </option>
+                <option value="">6</option>
+                <option value="">7</option>
+                <option value="">8</option>
+                <option value="">9</option>
+                <option value="">10</option>
+            </select>
+        </label>
+        <label for="">
+            Student:
+            <select id="addStudSelect">
+                <option value="">Select student: </option>
+
+            </select>
+        </label>
+        <input type="button" name="" value="Add to list" id="addToList">
+    </div>
+
+
+    <div class="wrap show">
+        <h2>Show</h2>
+
+        <label for="">
+            Professor:
+            <select>
+                <option value="">-</option>
+                <option value="">-</option>
+                <option value="">-</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <input type="button" name="" value="Add to list" id="addToList">
+        <br>
+        <br>
+        <label for="">
+            Student:
+            <select>
+                <option value="">-</option>
+                <option value="">-</option>
+                <option value="">-</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <input type="button" name="" value="Add to list" id="addToList">
+    </div>
+    <div class="wrap final">
+
+        <div class="firstShow">
+            <ul></ul>
         </div>
+        <hr>
+        <div class="secondShow">
+            <ul></ul>
+        </div>
+    </div>
 
-
-        <div class="wrap show">
-                <h2>Show</h2>
-       
-                <label for="">
-                       Professor:
-                        <select>
-                            <option value="">-</option>
-                            <option value="">-</option>
-                            <option value="">-</option>
-                        </select>
-                    </label>
-                <br><br>
-                <input type="button" name="" value="Add to list" id="addToList">
-                <br><br>
-                    <label for="">
-                         Student:
-                            <select>
-                                <option value="">-</option>
-                                <option value="">-</option>
-                                <option value="">-</option>
-                            </select>
-                        </label>
-                        <br><br>
-                <input type="button" name="" value="Add to list" id="addToList">
-            </div>
-            <div class="wrap final">
-
-                <div class="firstShow">
-                    <ul></ul>
-                </div>
-                <hr>
-                <div class="secondShow">
-                        <ul></ul>
-                    </div>
-
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
