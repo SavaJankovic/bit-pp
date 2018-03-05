@@ -1,0 +1,54 @@
+* {
+    display: block;
+}
+
+.wrap {
+    margin: 0 auto;
+    border: 2px solid black;
+    width: 500px;
+    min-height: 300px;
+    margin-bottom: 20px;
+}
+
+label {
+    margin: 10px;
+}
+
+input {
+    width: 90%;
+    height: 30px;
+    margin: 10px;
+}
+
+select {
+    margin: 10px;
+    width: 90%;
+    height: 30px;
+}
+
+.createMovie {
+    width: 90%;
+    height: 50px;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
+
+.createProgram {
+    width: 90%;
+    height: 50px;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
+.finalBtn{
+    width: 90%;
+    height: 50px;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+}
