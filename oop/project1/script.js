@@ -1,5 +1,5 @@
-var listOfMovie = [];
-var listOfProgram = [];
+let listOfMovie = [];
+let listOfProgram = [];
 
 function Movie(name, genre, length) {
     this.name = name;
@@ -8,10 +8,10 @@ function Movie(name, genre, length) {
 }
 
 Movie.prototype.getData = function () {
-    return this.name + ", " + this.genre + ", " + this.length + "  min";
+    return `${this.name}, ${this.genre}, ${this.length} min`;
 }
 
-function Program(date) {
+function Program(date = new Date()) {
     this.date = new Date(date);
     this.movies = [];
     this.numMovies = 0;
@@ -20,7 +20,7 @@ function Program(date) {
 
 Program.prototype.getData = function () {
 
-    var datum = this.date.getDate() + "/" + (this.date.getMonth() + 1) + "/" + this.date.getFullYear();
+    let datum = `${this.date.getDate()} / ${(this.date.getMonth() + 1)} / ${this.date.getFullYear()}`;
 
     // return datum + ", " + this.numMovies + " num of movies, " + this.programDuration + " duration length";
     return datum;
@@ -31,28 +31,43 @@ Program.prototype.getNumOfMovies = function () {
 }
 
 Program.prototype.getMoviesDuration = function () {
-    var totalDuration = 0;
-    this.movies.forEach(function (elem) {
-        totalDuration += elem.length;
+    let totalDuration = 0;
+    this.movies.forEach(function (movie) {
+        totalDuration += movie.length;
     })
     return totalDuration;
 }
 
 
-var divMovie = document.querySelector("#newMovie");
-var ulMovie = document.createElement("ul");
+let divMovie = document.querySelector("#newMovie");
+let ulMovie = document.createElement("ul");
 divMovie.appendChild(ulMovie);
 
 function createMovie() {
-    var title = document.querySelector("#titleMovie").value;
-    var length = document.querySelector("#lengthMovie").value;
-    var select = document.querySelector("#genreMovie");
-    var genre = select.options[select.selectedIndex].text;
+    let title = document.querySelector("#titleMovie").value;
+    let length = document.querySelector("#lengthMovie").value;
+    let select = document.querySelector("#genreMovie");
+    let genre = select.options[select.selectedIndex].text;
 
-    movie = new Movie(title, genre, length);
+    let movie = new Movie(title, genre, length);
 
-    var liMovie = document.createElement("li");
-    var textMovie = document.createTextNode(movie.getData());
+
+    // if (title === "Sava" || length === "999" || genre === "hardcore") {
+    //     if (title === "Sava") {
+    //         errorMsg = "Please enter movie title!";
+    //         return;
+    //     } else if (length === "999") {
+    //         errorMsg = "Please enter movie length!";
+    //         return;
+    //     } else if (genre === "hardcore") {
+    //         errorMsg = "Please enter movie genre!";
+    //         return;
+    //     }
+    //     document.querySelector(".error").textContent = errorMsg;
+    // }
+
+    let liMovie = document.createElement("li");
+    let textMovie = document.createTextNode(movie.getData());
     liMovie.appendChild(textMovie);
     ulMovie.appendChild(liMovie);
 
@@ -60,12 +75,12 @@ function createMovie() {
 
 
 
-    var addingMovie = document.querySelector("#finalMovie");
-    var optionMovie = document.createElement("option");
+    let addingMovie = document.querySelector("#finalMovie");
+    let optionMovie = document.createElement("option");
     optionMovie.value = listOfMovie.length - 1;
     addingMovie.appendChild(optionMovie);
 
-    var nameOfMovie = document.createTextNode(movie.getData());
+    let nameOfMovie = document.createTextNode(movie.getData());
 
     optionMovie.appendChild(nameOfMovie);
 
@@ -78,8 +93,8 @@ document.querySelector(".createMovie").addEventListener("click", function () {
 });
 
 
-var divProgram = document.querySelector("#newProgram");
-var ulProgram = document.createElement("ul");
+const divProgram = document.querySelector("#newProgram");
+let ulProgram = document.createElement("ul");
 
 divProgram.appendChild(ulProgram);
 
@@ -112,7 +127,7 @@ document.querySelector(".createProgram").addEventListener("click", function () {
     createProgram();
 });
 
- 
+
 
 
 function addMovieToProgram() {
