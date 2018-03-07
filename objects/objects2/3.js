@@ -70,7 +70,7 @@ Airport: Nikola Tesla, total passengers: 4
 
 
     Person.prototype.getData = function () {
-        return this.name + " " + this.surname;
+        return `${this.name}  ${this.surname}`;
     }
 
     function Seat(category) {
@@ -79,7 +79,7 @@ Airport: Nikola Tesla, total passengers: 4
     }
 
     Seat.prototype.getData = function () {
-        return this.number + ", " + this.category;
+        return `${this.number}, ${this.category}`;
     }
 
 
@@ -90,7 +90,7 @@ Airport: Nikola Tesla, total passengers: 4
 
 
     Passenger.prototype.getData = function () {
-        return this.seat.getData() + ", " + this.person.getData();
+        return `${this.seat.getData()}, ${this.person.getData()}`;
     }
 
     function Flight(destination, date) {
@@ -106,17 +106,18 @@ Airport: Nikola Tesla, total passengers: 4
 
 
     Flight.prototype.getData = function () {
-        var x = "";
-        for (var i = 0; i < this.listPass.length; i++) {
-            var lp = this.listPass[i];
-            x += "\n\t\t" + lp.getData();
+        let x = "";
 
-        }
-        return this.returnDate() + " " + this.destination + x;
+        this.listPass.forEach(function (passenger) {
+            let lp = passenger;
+            x += "\n\t\t" + lp.getData();
+        });
+
+        return `${this.returnDate()} ${this.destination}  ${x}`;
     }
 
     Flight.prototype.returnDate = function () {
-        return this.date.getDate() + ". " + this.date.getMonth() + ". " + this.date.getFullYear();
+        return `${this.date.getDate()}. ${this.date.getMonth()}. ${this.date.getFullYear()}`;
     }
 
 
@@ -127,15 +128,16 @@ Airport: Nikola Tesla, total passengers: 4
     }
 
     Airport.prototype.getData = function () {
-        var airportF = "";
-        var total = 0;
+        let airportF = "";
+        let total = 0;
 
-        for (var i = 0; i < this.listOfFlights.length; i++) {
-            var flight = this.listOfFlights[i];
-            total += flight.listPass.length;
-            airportF += "\n\t" + flight.getData();
-        }
-        return "Airport : " + this.name + ", " + " total passenger : " + total + " " + airportF;
+        this.listOfFlights.forEach(function (flights) {
+            total += flights.listPass.length;
+            airportF += "\n\t" + flights.getData();
+
+        });
+
+        return `Airport: ${this.name}, total passenger : ${total}  ${airportF}`;
     }
 
 
@@ -153,37 +155,35 @@ Airport: Nikola Tesla, total passengers: 4
     }
 
 
-    var name1 = new Person("Sava", "Jankovic");
-    var name2 = new Person("Nikola", "Radovic");
-    var name3 = new Person("Marko", "Madovic");
-    var name4 = new Person("Dikola", "Sadovic");
+    const name1 = new Person("Sava", "Jankovic");
+    const name2 = new Person("Nikola", "Radovic");
+    const name3 = new Person("Marko", "Madovic");
+    const name4 = new Person("Dikola", "Sadovic");
 
-    var seat1 = new Seat();
-    var seat2 = new Seat("b");
-    var seat3 = new Seat("b");
-    var seat4 = new Seat();
+    const seat1 = new Seat();
+    const seat2 = new Seat("b");
+    const seat3 = new Seat("b");
+    const seat4 = new Seat();
 
-    var pass1 = createPassenger(name1, seat1);
-    var pass2 = createPassenger(name2, seat2);
-    var pass3 = createPassenger(name3, seat3);
-    var pass4 = createPassenger(name4, seat4);
+    const pass1 = createPassenger(name1, seat1);
+    const pass2 = createPassenger(name2, seat2);
+    const pass3 = createPassenger(name3, seat3);
+    const pass4 = createPassenger(name4, seat4);
 
-    var flight1 = createFlight("Belgrade - Paris", "2018-05-10");
-    var flight2 = createFlight("Rim - New York", "2018-12-10");
+    const flight1 = createFlight("Belgrade - Paris", "2018-05-10");
+    const flight2 = createFlight("Rim - New York", "2018-12-10");
 
     flight1.addPassenger(pass1);
     flight1.addPassenger(pass2);
     flight2.addPassenger(pass3);
     flight2.addPassenger(pass4);
 
-    var air1 = new Airport();
+    const air1 = new Airport();
 
     air1.addFlight(flight1);
     air1.addFlight(flight2);
 
 
     console.log(air1.getData());
-    
-
 
 })();
