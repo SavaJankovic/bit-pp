@@ -60,114 +60,121 @@ Display festival’s data using getData method.
 "use strict";
 (function () {
 
-    function Genre(name) {
-        this.name = name;
-
-    }
-
-    Genre.prototype.getData = function () {
-        var firstLetter = this.name.charAt(0);
-        var lastLetter = this.name.charAt(this.name.length - 1);
-        var firstLast = firstLetter + lastLetter;
-
-        return firstLast.toUpperCase();
-
-    }
-
-
-    function Movie(title, length, genre) {
-        this.title = title;
-        this.length = length;
-        this.genre = genre;
-
-    }
-
-    Movie.prototype.getData = function () {
-        return this.title + ", " + this.length + " min, " + this.genre.getData();
-    }
-
-
-
-
-    function Program(date) {
-        this.date = new Date(date);
-        this.listMovies = [];
-
-    };
-
-    Program.prototype.getNumOfMovies = function () {
-        return this.listMovies.length;
-    }
-
-
-    Program.prototype.getData = function () {
-        var dateProgram = this.date.getDate() + " - " + (this.date.getMonth() + 1) + " - " + this.date.getFullYear();
-        var programLength = 0;
-        var movieList = [];
-        for (var i = 0; i < this.listMovies.length; i++) {
-            programLength += this.listMovies[i].length;
-            movieList += "\n\t\t" + this.listMovies[i].getData();
+    class Genre {
+        constructor(name) {
+            this.name = name;
         }
 
-        return dateProgram + ", " + "program length of " + this.getNumOfMovies() + " movies is " + programLength + " min" + movieList;
-    }
 
-    Program.prototype.addMovie = function (movie) {
-        this.listMovies.push(movie);
-    }
+        getData() {
+            let firstLetter = this.name.charAt(0);
+            let lastLetter = this.name.charAt(this.name.length - 1);
+            let firstLast = `${firstLetter}${lastLetter}`;
 
+            return firstLast.toUpperCase();
 
-
-
-    function Festival(name) {
-        this.name = name;
-        this.listOfPrograms = [];
-        this.numOfMoviesAll = 0;
-
+        }
     }
 
 
 
-
-    Festival.prototype.getData = function () {
-        var nameFestival = "";
-
-        for (var i = 0; i < this.listOfPrograms.length; i++) {
-            nameFestival += "\n\t" + this.listOfPrograms[i].getData();
-            this.numOfMoviesAll += this.listOfPrograms[i].getNumOfMovies();
+    class Movie {
+        constructor(title, length, genre) {
+            this.title = title;
+            this.length = length;
+            this.genre = genre;
         }
 
-        return this.name + " festival has " + this.numOfMoviesAll + " moves titles" + nameFestival;
+        getData() {
+            return `${this.title}, ${this.length} min, ${this.genre.getData()}`;
+        }
+    }
+
+
+
+    class Program {
+        constructor(date) {
+            this.date = new Date(date);
+            this.listMovies = [];
+
+        };
+        getNumOfMovies() {
+            return this.listMovies.length;
+        }
+
+
+        getData() {
+            let dateProgram = `${this.date.getDate()} - ${(this.date.getMonth() + 1)} - ${this.date.getFullYear()}`;
+            let programLength = 0;
+            let movieList = [];
+            this.listMovies.forEach(function (movie) {
+                programLength += movie.length;
+                movieList += "\n\t\t" + movie.getData();
+            });
+
+            return `${dateProgram }, program length of ${this.getNumOfMovies()} movies is ${programLength} min ${movieList}`;
+        }
+
+        addMovie(movie) {
+            this.listMovies.push(movie);
+        }
 
     }
 
-    Festival.prototype.addProgram = function (program) {
-        this.listOfPrograms.push(program);
+
+
+
+    class Festival {
+        constructor(name) {
+            this.name = name;
+            this.listOfPrograms = [];
+            this.numOfMoviesAll = 0;
+        }
+        getData() {
+            let nameFestival = "";
+            let numOFMovies = 0;
+            this.listOfPrograms.forEach(function (program) {
+                nameFestival += "\n\t" + program.getData();
+                numOFMovies += program.getNumOfMovies();
+            });
+
+            return `${this.name} festival has ${numOFMovies} movies titles ${nameFestival}`;
+
+        }
+
+        addProgram(program) {
+            this.listOfPrograms.push(program);
+        }
+
     }
 
-    var action = new Genre("action");
-    var triller = new Genre("triller");
-    var scifi = new Genre("science fiction");
-    var drama = new Genre("drama");
+
+
+
+
+    const action = new Genre("action");
+    const triller = new Genre("triller");
+    const scifi = new Genre("science fiction");
+    const drama = new Genre("drama");
 
     function createMovie(movieTitle, movieLength, genre) {
         return new Movie(movieTitle, movieLength, genre);
     }
 
-    var movie1 = new Movie("Gladiator", 123, action);
-    var movie2 = new Movie("Mystic River", 103, triller);
-    var movie3 = new Movie("Pulp Fiction", 113, triller);
-    var movie4 = new Movie("Matrix", 143, scifi);
-    var movie5 = createMovie("Reservoir Dogs", 123, drama);
+    const movie1 = new Movie("Gladiator", 123, action);
+    const movie2 = new Movie("Mystic River", 103, triller);
+    const movie3 = new Movie("Pulp Fiction", 113, triller);
+    const movie4 = new Movie("Matrix", 143, scifi);
+    const movie5 = createMovie("Reservoir Dogs", 123, drama);
 
     function createProgram(date) {
         return new Program(date);
     }
-    var program1 = new Program("20 Apr 2018");
-    var program2 = createProgram("10 Jul 2018");
+    const program1 = new Program("20 Apr 2018");
+    const program2 = createProgram("10 Jul 2018");
 
 
-    var fest1 = new Festival("Palme d'Or");
+    const fest1 = new Festival("Palme d'Or");
 
     program1.addMovie(movie1);
     program1.addMovie(movie2);
